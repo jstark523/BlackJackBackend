@@ -6,6 +6,7 @@ import dev.stark.BlackJack.Structures.Deck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,6 +40,12 @@ public class DeckService {
         else {
             return Optional.empty();
         }
+    }
+    public void postTurn(int turnNum){
+        List<Deck> existingDeck = deckRepository.findAll();
+        Deck deck = existingDeck.get(0);
+        deck.setTurn(turnNum);
+        deckRepository.save(deck);
     }
 
 

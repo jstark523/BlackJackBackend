@@ -47,4 +47,10 @@ public class DeckController {
             return ResponseEntity.notFound().build();
         }
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/turn")
+    public ResponseEntity postTurn(@RequestBody int turnNum){
+        deckService.postTurn(turnNum);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
